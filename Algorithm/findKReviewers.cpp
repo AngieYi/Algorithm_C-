@@ -26,7 +26,7 @@ vector<pair<int, string>> helper(unordered_map<string, priority_queue<int>>& mp,
 		}
 	}
 
-    //add the highest quality reviewer into the result
+        //add the highest quality reviewer into the result
 	int i = 0;
 	while ((i < k) && !pq.empty())
 	{
@@ -38,21 +38,21 @@ vector<pair<int, string>> helper(unordered_map<string, priority_queue<int>>& mp,
 	// check whether has leftover K. if no, return result; if yes, recursively call helper function
 	int todoK = k - res.size();
 	if (todoK <= 0) return res;
-	else 
-  {
-     vector<pair<int, string>> temp;
-     temp = helper(mp, todoK);
-     res.insert(res.end(),temp.begin(),temp.end());
-     return res;
-  }
+	else
+	{
+		vector<pair<int, string>> temp;
+		temp = helper(mp, todoK);
+		res.insert(res.end(),temp.begin(),temp.end());
+		return res;
+	}
 }
 
 
 //we use integer to save quality value, assume the bigger value, the higher quality
 vector<pair<int, string>> findKReviewers(vector<pair<int, string>>& reviewers, int k)
 {
-  // edge case
-  if(k == 0 || k > reviewers.size()) return {};
+	// edge case
+	if(k == 0 || k > reviewers.size()) return {};
 
 	//key: affiliation; value: priority_queue of quality
 	unordered_map<string, priority_queue<int>> mp;
@@ -69,9 +69,9 @@ void main()
 {
 	vector<pair<int, string>> reviewers, res;
 	int k = 4;
-	reviewers = {{6,"Google"}, {5,"Google"},{3,"Google"}, 
-               {4,"Facebook"},{2,"Facebook"},
-               {1,"Apple"} };
+	reviewers = {{6,"Google"}, {5,"Google"}, {3,"Google"}, 
+                 {4,"Facebook"}, {2,"Facebook"},
+                 {1,"Apple"}};
 	res = findKReviewers(reviewers, k);
 	for (auto& x : res)
 		cout << "(" << x.first << "," << x.second << ")" << "\n" <<endl;
