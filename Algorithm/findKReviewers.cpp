@@ -64,7 +64,7 @@ vector<pair<int, string>> findKReviewers(vector<pair<int, string>>& reviewers, i
 	return helper(mp, k);
 }
 
-void main()
+int main()
 {
 	vector<pair<int, string>> reviewers, res;
 	int k = 4;
@@ -74,4 +74,6 @@ void main()
 	res = findKReviewers(reviewers, k);
 	for (auto& x : res)
 		cout << "{" << x.first << "," << x.second << "}" << "\n" <<endl;
+	
+	return 1;
 }
