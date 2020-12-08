@@ -4,8 +4,6 @@
 #include <queue>
 using namespace std;
 
-
-
 vector<pair<int, string>> helper(unordered_map<string, priority_queue<int>>& mp, int k)
 {
 	priority_queue<pair<int, string>>  pq;
@@ -21,7 +19,7 @@ vector<pair<int, string>> helper(unordered_map<string, priority_queue<int>>& mp,
 		}
 	}
 
-        //add the highest quality reviewer into the result
+    //add the highest quality reviewer into the result
 	int i = 0;
 	while ((i < k) && !pq.empty())
 	{
