@@ -9,7 +9,7 @@ vector<pair<int, string>> helper(unordered_map<string, priority_queue<int>>& mp,
 	priority_queue<pair<int, string>>  pq;
 	vector<pair<int, string>> res;
 
-	//push the highest quality reviewer of each affiliation into a priority_queue
+	// push the highest quality reviewer of each affiliation into a priority_queue
 	for (auto& m : mp)
 	{
 		if (m.second.size() >= 1)
@@ -18,8 +18,8 @@ vector<pair<int, string>> helper(unordered_map<string, priority_queue<int>>& mp,
 			m.second.pop();
 		}
 	}
-
-    //add the highest quality reviewer into the result
+	
+	// add the highest quality reviewer into the result
 	int i = 0;
 	while ((i < k) && !pq.empty())
 	{
@@ -53,14 +53,14 @@ vector<pair<int, string>> findKReviewers(vector<pair<int, string>>& reviewers, i
 	// edge case
 	if(k == 0 || k > reviewers.size()) return {};
 
-	//key: affiliation; value: priority_queue of quality
+	// key: affiliation; value: priority_queue of quality
 	unordered_map<string, priority_queue<int>> mp;
 
-	//loop reviewers and put them into a unordered_map
+	// loop reviewers and put them into a unordered_map
 	for (auto& p : reviewers)
 		mp[p.second].push(p.first);
 
-	//helper function picks the K reviewers
+	// helper function picks the K reviewers
 	return helper(mp, k);
 }
 
@@ -69,9 +69,9 @@ void main()
 	vector<pair<int, string>> reviewers, res;
 	int k = 4;
 	reviewers = {{6,"Google"}, {5,"Google"}, {3,"Google"}, 
-                 {4,"Facebook"}, {2,"Facebook"},
-                 {1,"Apple"}};
+		     {4,"Facebook"}, {2,"Facebook"},
+		     {1,"Apple"}};
 	res = findKReviewers(reviewers, k);
 	for (auto& x : res)
-		cout << "(" << x.first << "," << x.second << ")" << "\n" <<endl;
+		cout << "{" << x.first << "," << x.second << "}" << "\n" <<endl;
 }
