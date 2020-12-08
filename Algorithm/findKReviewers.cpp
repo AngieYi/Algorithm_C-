@@ -4,6 +4,19 @@
 #include <queue>
 using namespace std;
 
+/*
+Requirements:
+findKReviewers: find K Reviewers from N affiliation, keep diversity as 1st priority, quality as 2nd priority
+input:  N reviewers, each reviewer has info of quality and affliation; K: number of reviewers to pick
+output: K reviewers, each reviewer has info of quality and affliation
+*/
+
+
+/*
+This solution overall 
+Time complexity: O(NlogN), mainly due to build priority queue.
+Space complexity: O(N).
+*/
 vector<pair<int, string>> helper(unordered_map<string, priority_queue<int>>& mp, int k)
 {
 	priority_queue<pair<int, string>>  pq;
@@ -41,13 +54,7 @@ vector<pair<int, string>> helper(unordered_map<string, priority_queue<int>>& mp,
 }
 
 
-/*
-Requirements:
-findKReviewers: find K Reviewers from N affiliation, keep diversity as 1st priority, quality as 2nd priority
-input:  N reviewers, each reviewer has info of quality and affliation; K: number of reviewers to pick
-output: K reviewers, each reviewer has info of quality and affliation
-Notify: We use integer to save quality value, assume the bigger value, the higher quality
-*/
+//notify: We use integer to save quality value, assume the bigger value, the higher quality
 vector<pair<int, string>> findKReviewers(vector<pair<int, string>>& reviewers, int k)
 {
 	// edge case
